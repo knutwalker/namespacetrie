@@ -1,0 +1,5 @@
+/external/
+/build/
+/dist/
+/namespacetrie.egg-info/
+
