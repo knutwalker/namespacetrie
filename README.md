@@ -14,9 +14,6 @@ Namespace Trie may help you find flaws in the namespace structure.
 Namespace Trie is developed for use with Closure Depresolver and may at the
 moment not be very useful as there is not standalone interface.
 
-This file was modified by PyCharm 2.5 for binding GitHub repository
-
-
 
 ## Install
 
