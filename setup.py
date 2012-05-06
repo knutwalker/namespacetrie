@@ -18,17 +18,13 @@
 __author__ = 'knutwalker@gmail.com (Paul Horn)'
 
 
-import os.path
-
 try:
     from setuptools import setup, find_packages
 except ImportError:
     from distutils.core import setup
     find_packages = lambda : ['namespacetrie', 'tests']
 
-def read(fname):
-    with open(os.path.join(os.path.dirname(__file__), fname)) as fh:
-        return fh.read()
+
 
 setup(
     name='namespacetrie',
@@ -41,7 +37,21 @@ setup(
     url='https://github.com/knutwalker/namespacetrie',
 
     keywords = "namespace trie",
-    long_description=read('README'),
+    long_description="""
+This is the Namespace Trie.
+
+Namespace Trie is a implementation of a Trie data structure.  Unlike typical
+implementations, which are splitting its value into single characters,
+Namespace Trie treats its values as namespaces.  Namespaces are strings that
+are delimited by a period. Such namespaces often occur in programming
+languages, e.g. Java or Python and may also appear while using some libraries
+for programming languages that itself do not offer namespacing (e.g. the
+Google Closure library offers a namespace feature for JavaScript).  The
+Namespace Trie may help you find flaws in the namespace structure.
+
+Namespace Trie is developed for use with Closure Depresolver and may at the
+moment not be very useful as there is not standalone interface.
+    """.strip(),
 
     install_requires=['weakrefset', 'ordereddict'],
 
