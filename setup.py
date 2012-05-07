@@ -19,11 +19,9 @@ __author__ = 'knutwalker@gmail.com (Paul Horn)'
 
 
 try:
-    from setuptools import setup, find_packages
+    from setuptools import setup
 except ImportError:
     from distutils.core import setup
-    find_packages = lambda : ['namespacetrie', 'tests']
-
 
 
 setup(
@@ -56,7 +54,7 @@ moment not be very useful as there is not standalone interface.
     install_requires=['weakrefset', 'ordereddict'],
 
     package_dir={'namespacetrie': 'namespacetrie'},
-    packages=find_packages(),
+    packages=['namespacetrie'],
 
-    test_suite="tests"
+    test_suite="namespacetrie.nstrie_test"
 )
