@@ -127,6 +127,9 @@ class NsTrieTestCase(unittest.TestCase):
         self.assertSetEqual(expected, set(self.to_py(s) for s in trie1._NsTrie__child_nodes))
         self.assertSetEqual(expected, set(self.to_py(s) for s in trie2._NsTrie__child_nodes))
 
+        with self.assertRaises(KeyError):
+            trie1.add('com.example.foo')
+
 
     def test_iter(self):
 
@@ -321,8 +324,6 @@ class NsTrieTestCase(unittest.TestCase):
         with self.assertRaises(KeyError):
             trie.get('org.example.foo')
 
-
-    #noinspection PyUnresolvedReferences
     def test_remove(self):
         trie = NsTrie((
             'com.example.foo',
@@ -337,6 +338,17 @@ class NsTrieTestCase(unittest.TestCase):
 
         with self.assertRaises(KeyError):
             trie.remove('org.example.foo')
+
+    def test_discard(self):
+        trie = NsTrie((
+            'com.example.foo',
+            'com.example.bar'
+            ))
+
+        try:
+            trie.discard('org.example.foo')
+        except KeyError:
+            self.fail("discard should not produce a KeyError")
 
     def test_sorted(self):
         modules = [

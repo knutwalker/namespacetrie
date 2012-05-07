@@ -165,7 +165,7 @@ class NsTrie(object):
 
         value = String(value)
         if value in self.__child_nodes:
-            return
+            raise KeyError
         self.__child_nodes.add(value)
 
         trie = self.__struct
@@ -206,3 +206,9 @@ class NsTrie(object):
 
     def remove(self, value):
         del self[value]
+
+    def discard(self, value):
+        try:
+            self.remove(value)
+        except KeyError:
+            pass
